@@ -1,0 +1,46 @@
+class Solution {
+    public String solution(int[] numbers, String hand) {
+        String answer = "";
+        int left=10;
+        int right=12;
+        
+        for(int temp : numbers){
+            if(temp == 0){
+                temp = 11;
+            }
+            
+            switch(temp%3){
+                case 0:
+                    right = temp;
+                    answer += "R";
+                    break;
+                case 1:
+                    left = temp;
+                    answer += "L";
+                    break;
+                case 2:
+                    int leftAbs = Math.abs(left-temp);
+                    int rightAbs = Math.abs(right-temp);
+                    int leftDistance = (leftAbs/3)+(leftAbs%3);
+                    int rightDistance = (rightAbs/3)+(rightAbs%3);
+                    
+                    if(leftDistance>rightDistance){
+                        right = temp;
+                        answer += "R";
+                    }else if(leftDistance<rightDistance){
+                        left = temp;
+                        answer += "L";
+                    }else{
+                        if(hand.equals("right")){
+                            right = temp;
+                            answer += "R";
+                        }else{
+                            left = temp;
+                            answer += "L";
+                        }
+                    }
+            }
+        } 
+        return answer;
+    }
+}
