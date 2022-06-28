@@ -1,0 +1,5 @@
+SELECT *
+FROM(SELECT datetime as 시간
+FROM animal_ins
+ORDER BY datetime desc)
+WHERE rownum=1;
