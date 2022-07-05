@@ -1,0 +1,40 @@
+//내코드
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] arr, int divisor) {
+        
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        
+        for(int num : arr){
+            if(num%divisor==0){
+                list.add(num);
+            }
+        }
+        
+        if(list.size()==0){
+            return new int[]{-1};
+        }
+        
+        int[] answer = new int[list.size()];
+        for(int i=0; i<list.size(); i++){
+            answer[i] = list.get(i);
+        }
+        
+        Arrays.sort(answer);
+        
+        return answer;
+    }
+}
+
+//배울코드
+import java.util.Arrays;
+
+class Solution {
+  public int[] solution(int[] arr, int divisor) {
+          int[] answer = Arrays.stream(arr).filter(factor -> factor % divisor == 0).toArray();
+          if(answer.length == 0) answer = new int[] {-1};
+          java.util.Arrays.sort(answer);
+          return answer;
+  }
+}
